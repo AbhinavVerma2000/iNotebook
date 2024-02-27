@@ -55,7 +55,7 @@ router.post(
     body("password", "Password cannot be blank").exists(),
   ],
   async (req, res) => {
-    errors = validationResult(req);
+    let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -69,7 +69,7 @@ router.post(
       }
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        success=false
+        let success=false
         return res
           .status(400)
           .json({success, error: "Please Login with correct credentials" });
@@ -90,8 +90,8 @@ router.post(
 );
 router.post("/getuser", fetchuser, async (req, res) => {
   try {
-    userId = req.user.id;
-    const user = await User.findById(userId).select("-password");
+    let userId = req.user.id;
+    const user = await User.findById(userId).select("password");
     res.send(user)
   } catch (error) {
     console.error(error.message);
