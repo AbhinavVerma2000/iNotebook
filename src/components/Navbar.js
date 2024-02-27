@@ -1,15 +1,24 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import NoteState from "../context/notes/NoteState";
 
-const Navbar = () => {
+const Navbar = (props) => {
   let location = useLocation();
+  let history = useNavigate();
   useEffect(() => {}, [location]);
+  const logout = ()=>{
+    localStorage.removeItem('token')
+    setTimeout(()=>{
+      history("/");
+    }, 1000)
+    
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" href="/">
+        <div className="navbar-brand">
           iNotebook
-        </Link>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -46,6 +55,7 @@ const Navbar = () => {
             </li>
           </ul>
           <form className="d-flex">
+            <button onClick={logout}>Logout</button>
             <Link className="btn btn-primary mx-1" to="/login" role="button">
               Login
             </Link>
