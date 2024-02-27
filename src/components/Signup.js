@@ -2,6 +2,7 @@ import React, {useState,} from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
+
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
   let history = useNavigate();
 
@@ -39,7 +40,7 @@ const Signup = (props) => {
           <label htmlFor="name" className="form-label">
             Name
           </label>
-          <input name="name"
+          <input name="name" onChange={onChange} value={credentials.name}
             type="text"
             className="form-control"
             id="name"
@@ -50,7 +51,7 @@ const Signup = (props) => {
           <label htmlFor="email" className="form-label">
             Email address
           </label>
-          <input name="email"
+          <input name="email" value={credentials.email}
             type="email"
             className="form-control"
             id="email"
@@ -65,7 +66,7 @@ const Signup = (props) => {
           <label htmlFor="password" className="form-label">
             Password
           </label>
-          <input name="password"
+          <input name="password" value={credentials.password}
             type="password"
             className="form-control"
             id="password"
@@ -76,7 +77,7 @@ const Signup = (props) => {
           <label htmlFor="cpassword" className="form-label">
             Confirm Password
           </label>
-          <input name="cpassword"
+          <input name="cpassword" value={credentials.cpassword}
             type="password"
             className="form-control"
             id="cpassword"
