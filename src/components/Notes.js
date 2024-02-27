@@ -9,8 +9,7 @@ const Notes = (props) => {
 
   useEffect(() => {
     getNotes();
-    // eslint-disable-next-line
-  }, []);
+  });
 
   const updateNote = (currentNote) => {
     ref.current.click();
