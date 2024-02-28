@@ -55,7 +55,7 @@ const Navbar = (props) => {
             </li>
           </ul>
           <form className="d-flex">
-            <button onClick={logout}>Logout</button>
+            <button className="btn btn-primary mx-1" onClick={logout}>Logout</button>
             <Link className="btn btn-primary mx-1" to="/login" role="button">
               Login
             </Link>
